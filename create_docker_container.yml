@@ -1,0 +1,13 @@
+---
+  - hosts: web-servers
+    become: true
+    tasks:
+     - name: stop previous version docker
+       shell: docker stop webtom
+     - name: remove stopped container
+       shell: docker rm -f webtom	  
+     - name: remove docker images
+       shell: docker image rm -f pravin786/docjen
+       
+     - name: create docker image
+       shell: docker run -d --name webtom -p 8090:8080 pravin786/docjen
