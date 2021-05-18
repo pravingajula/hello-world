@@ -1,13 +1,13 @@
 ---
-  - hosts: web-pvr
+  - hosts: web_server
     become: true
     tasks:
-     - name: stop previous version docker
-       shell: docker stop webtom
-     - name: remove stopped container
-       shell: docker rm -f webtom	  
-     - name: remove docker images
-       shell: docker image rm -f pravin786/docjen
+  #   - name: stop previous version docker
+  #     shell: docker stop tomweb
+  #   - name: remove stopped container
+  #     shell: docker rm -f tomweb	  
+  #   - name: remove docker images
+  #     shell: docker image rm -f pravin786/practice2:latest
        
      - name: create docker image
-       shell: docker run -d --name webtom -p 8090:8080 pravin786/docjen
+       shell: docker run -d --name tomweb -p 8090:8080 pravin786/practice2:latest
